@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvidencijaPrirodnihSpomenika", "EvidencijaPrirodnihSpomenika\EvidencijaPrirodnihSpomenika.csproj", "{7806DA3D-A032-437F-BA34-DE6D1B3CCA82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7806DA3D-A032-437F-BA34-DE6D1B3CCA82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7806DA3D-A032-437F-BA34-DE6D1B3CCA82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7806DA3D-A032-437F-BA34-DE6D1B3CCA82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7806DA3D-A032-437F-BA34-DE6D1B3CCA82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FD432C4-6F22-485F-B6A3-DD60D8427989}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+﻿<Window x:Class="EvidencijaPrirodnihSpomenika.Tutorial.Dodato"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EvidencijaPrirodnihSpomenika.Tutorial"
+        mc:Ignorable="d"
+        Title="Uspesno Dodato" Height="116.222" Width="196.111" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock Text="Uspesno ste dodali spomenik" Margin="10,10,9.333,51.333"></TextBlock>
+        <Button x:Name="OkBtn" Content="Ok" Margin="65,36,70.333,21.333" Click="OkBtn_Click"  ></Button>
+    </Grid>
+</Window>

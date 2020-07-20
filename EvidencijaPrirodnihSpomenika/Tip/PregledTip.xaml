@@ -1,0 +1,215 @@
+﻿<Window x:Class="EvidencijaPrirodnihSpomenika.Tip.PregledTip"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:val="clr-namespace:EvidencijaPrirodnihSpomenika.Validacija"
+        xmlns:local="clr-namespace:EvidencijaPrirodnihSpomenika.Tip"
+        mc:Ignorable="d"   
+        Title="PregledTipa" Height="380.223" Icon="/images/pregledtipova.png" Width="489.667" ResizeMode="NoResize">
+    <Window.CommandBindings>
+        <CommandBinding x:Name="Help" Command="ApplicationCommands.Help" Executed="Help_Executed"></CommandBinding>
+    </Window.CommandBindings>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+
+            <GradientStop Color="PowderBlue"/>
+            <GradientStop Color="DodgerBlue" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="258*" />
+            <ColumnDefinition Width="53*"/>
+            <ColumnDefinition Width="173*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Background="PowderBlue"  x:Name="grdTipovi"  IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="3" Margin="0,0,0.666,38" AlternatingRowBackground="FloralWhite"  AlternationCount="2"  >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Ikonica" Width="SizeToCells">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <Image Source="{Binding ikonica, Mode=OneTime}" Width="32" Height="32" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Oznaka" Width="SizeToCells">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding oznaka, Mode=OneTime}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Naziv" Width="SizeToCells" Binding="{Binding naziv, Mode=OneTime}"></DataGridTextColumn>
+
+                <!--" DataGridTextColumn Header="Opis" Width="SizeToCells" Binding="{Binding opis}"></-->
+            </DataGrid.Columns>
+
+
+        </DataGrid>
+
+        <!--  Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding ElementName=grdTipovi,Path=SelectedItem}" Grid.ColumnSpan="2" Margin="0,0.333,0.334,0.333">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0">Oznaka:</TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="1">Naziv:</TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="2">Opis:</TextBlock>
+            <TextBlock Grid.Column="0" Margin="0,20,0,0" Grid.Row="3">Ikonica:</TextBlock>
+
+
+            <TextBox x:Name="oznaTxt"  Grid.Column="1" Grid.Row="0" Text="{Binding Path=oznaka}" IsEnabled="False"></TextBox>
+            <TextBox x:Name="nazivTxt" Grid.Column="1" Grid.Row="1" Text="{Binding Path=naziv}"></TextBox>
+            <TextBox x:Name="opisTxt" Grid.Column="1" Grid.Row="2" Text="{Binding Path=opis}"></TextBox>
+            <Image x:Name="Ikonica" Grid.Column="1" Grid.Row="3" Stretch="Fill"  Margin="13,9,534,10.333" Source="{Binding Path=ikonica}" />
+
+            <Button x:Name="PromeniIkonicuButton" Grid.Column="1" Grid.Row="3" Content="Promeni"  Height="23" Click="PromeniIkonicuButton_Click" Margin="86,14,433,14" />
+            <Button x:Name="IzmeniButton" Content="Izmeni" Grid.Column="1" Margin="437,13,94,22.333" Grid.Row="3" FontSize="14" Click="IzmeniButton_Click"/>
+            <Button x:Name="ObrisiButton" Content="Obrisi" HorizontalAlignment="Left" Margin="498,13,0,22.333" Width="57" Grid.Column="1" Grid.Row="3" FontSize="14" Click="ObrisiButton_Click" />
+            <Button Content="Zatvori" x:Name="ZatvoriButton" Click="ZatvoriButton_Click" Grid.Column="1" Margin="498,75,33,-39.667" Grid.Row="3" FontSize="14" />
+        </-->
+        <StackPanel  DataContext="{Binding ElementName=grdTipovi,Path=SelectedItem}" HorizontalAlignment="Left" Height="141" Margin="0,167,-136.334,0" VerticalAlignment="Top" Width="621" Grid.RowSpan="2" Grid.ColumnSpan="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="82*" />
+                    <ColumnDefinition Width="267*" />
+                    <ColumnDefinition Width="272*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                    <TextBlock>Oznaka</TextBlock>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0.333,0">
+                    <TextBox x:Name="oznaTxt"   Text="{Binding Path=oznaka}" IsEnabled="False" Width="239.5"></TextBox>
+                </StackPanel>
+
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="105*" />
+                    <ColumnDefinition Width="333*" />
+                    <ColumnDefinition Width="377*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0,0,8.667,0">
+                    <TextBlock Grid.Column="0" Grid.Row="1">Naziv:</TextBlock>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="2.333,0,0.667,0">
+                    <TextBox x:Name="nazivTxt" MaxLength="41"  Width="240">
+                        <TextBox.Text>
+                            <Binding Path="naziv"  UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <val:ValidacijaTekstaa ValidationStep="RawProposedValue"/>
+                                    <val:ValidacijaRazmak ValidationStep="RawProposedValue" />
+                                    <val:ValidacijaDuzinaNaziv ValidationStep="RawProposedValue" />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0"/>
+                                    <TextBlock TextWrapping="Wrap" Width="150" Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+
+                        </Validation.ErrorTemplate>
+                    </TextBox>
+                </StackPanel>
+
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="102*" />
+                    <ColumnDefinition Width="336*" />
+                    <ColumnDefinition Width="377*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0,0,9,0">
+                    <TextBlock Grid.Column="0" Grid.Row="1">Opis:</TextBlock>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,0.667,0">
+                    <TextBox x:Name="opisTxt" MaxLength="500" Grid.Column="1" Grid.Row="2" Text="{Binding Path=opis}" Width="240" Height="40" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" ></TextBox>
+                </StackPanel>
+
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="91*" />
+                    <ColumnDefinition Width="450*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0,0,9,0.333">
+                    <TextBlock Grid.Column="0" Grid.Row="1" Margin="0,20,0,0">Ikonica:</TextBlock>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="2,0,0.333,0.333">
+                    <Image x:Name="Ikonica" Height="40" Width="40"   Stretch="Fill"  Margin="13,9,534,10.333" Source="{Binding ikonica , Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.ColumnSpan="2" Margin="2,0,0.333,0.333">
+                    <Button x:Name="PromeniIkonicuButton" Grid.Column="1" Grid.Row="3" Content="Promeni"  Height="23" Click="PromeniIkonicuButton_Click" RenderTransformOrigin="0.5,0.507" />
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="44" Margin="0,137,-8.073,-5" Grid.Row="1" VerticalAlignment="Top" Width="493" Grid.ColumnSpan="3">
+            <Button x:Name="IzmeniButton" Content="Izmeni"   FontSize="14" Height="28" Click="IzmeniButton_Click" Margin="211,0,204.333,0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=nazivTxt}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </Button.Style>
+            </Button>
+            <Button x:Name="ObrisiButton" Content="Obrisi" Margin="306,-28,109.333,0" Click="ObrisiButton_Click" FontSize="14" Height="28"/>
+            <Button x:Name="ZatvoriButton" Content="Zatvori" Margin="400,-28,23.333,0" FontSize="14" Height="29" Click="ZatvoriButton_Click" RenderTransformOrigin="0.5,0.5"/>
+            <Button x:Name="DodajBtn" Content="Dodaj Tip" Margin="17,-28,398.333,0"  Click="DodajBtn_Click" />
+        </StackPanel>
+        <Separator Height="19" Margin="-1,202,0.666,-30.333" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" Background="#FF717171" />
+        <GridSplitter  HorizontalAlignment="Left" Height="72" Margin="52.667,212,0,-93.333" Grid.Row="1" VerticalAlignment="Top" Width="5" Grid.Column="2" Background="#FF717171"/>
+        <Separator HorizontalAlignment="Right" Height="23" Margin="-1,114,0.927,0" VerticalAlignment="Top" Width="485" Grid.Row="1" Grid.ColumnSpan="3"/>
+    </Grid>
+</Window>

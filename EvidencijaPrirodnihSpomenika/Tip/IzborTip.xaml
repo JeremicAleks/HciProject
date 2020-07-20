@@ -1,0 +1,61 @@
+﻿<Window x:Class="EvidencijaPrirodnihSpomenika.Tip.IzborTip"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EvidencijaPrirodnihSpomenika.Tip"
+        mc:Ignorable="d"
+        Title="IzborTip" Height="363" Width="636" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*" />
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="grdTipovi"  IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="2" Margin="0,0,0.334,166.333" Grid.RowSpan="2"  >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Oznaka" Width="SizeToCells">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding oznaka}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Naziv" Width="SizeToCells" Binding="{Binding naziv}"></DataGridTextColumn>
+                <!--" DataGridTextColumn Header="Opis" Width="SizeToCells" Binding="{Binding opis}"></-->
+            </DataGrid.Columns>
+
+
+        </DataGrid>
+        <Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding ElementName=grdTipovi,Path=SelectedItem}" Grid.ColumnSpan="2" Margin="0,0.333,0.334,0.333">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0">Oznaka:</TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="1">Naziv:</TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="2">Opis:</TextBlock>
+
+
+            <TextBox x:Name="oznaTxt"  Grid.Column="1" Grid.Row="0" Text="{Binding Path=oznaka}" IsEnabled="False"></TextBox>
+            <TextBox x:Name="nazivTxt" Grid.Column="1" Grid.Row="1" IsEnabled="False" Text="{Binding Path=naziv}"></TextBox>
+            <TextBox x:Name="opisTxt" Grid.Column="1" Grid.Row="2" IsEnabled="False" Text="{Binding Path=opis}"></TextBox>
+
+            <Button x:Name="IzaberiButton" Content="Izaberi" Grid.Column="1" Margin="264,73,244,-97.667" Grid.Row="3" FontSize="14" Click="IzaberiButton_Click" />
+            <Button x:Name="DodajButton" Content="Dodaj tip" Grid.Column="1" Margin="384,73,124,-97.667" Grid.Row="3" FontSize="14" Click="DodajButton_Click" />
+            <Button Content="Zatvori" x:Name="ZatvoriButton"  Grid.Column="1" Margin="498,73,10,-97.667" Grid.Row="3" FontSize="14" Click="ZatvoriButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>

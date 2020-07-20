@@ -1,0 +1,148 @@
+﻿<Window x:Class="EvidencijaPrirodnihSpomenika.Etiketa.PregledEtiketa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+         xmlns:hlp="clr-namespace:EvidencijaPrirodnihSpomenika.Help"
+        xmlns:local="clr-namespace:EvidencijaPrirodnihSpomenika.Etiketa"
+        mc:Ignorable="d"
+        Title="Pregled Etiketa" Height="323.222" Icon="/images/pregledtag.png" Width="434.112" ResizeMode="NoResize" >
+    <Window.CommandBindings>
+        <CommandBinding x:Name="Help" Command="ApplicationCommands.Help" Executed="Help_Executed"></CommandBinding>
+    </Window.CommandBindings>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+
+            <GradientStop Color="PowderBlue"/>
+            <GradientStop Color="DodgerBlue" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="228*" />
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="146*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Background="PowderBlue"  x:Name="dgrEtiketa" hlp:HelpProvider.HelpKey="PregledEtiketa"  IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="3" Margin="0,0,0.333,39" AlternatingRowBackground="FloralWhite"  AlternationCount="2" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Oznaka" Width="150">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding oznaka}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Boja" Width="80">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBox IsEnabled="False" Width="80" Background="{Binding boja}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+
+        </DataGrid>
+
+        <StackPanel DataContext="{Binding ElementName=dgrEtiketa,Path=SelectedItem}" Margin="0,122,10.333,53.333" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="82*" />
+                    <ColumnDefinition Width="267*" />
+                    <ColumnDefinition Width="272*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                    <TextBlock>Oznaka</TextBlock>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3" Margin="53,0,111.333,0">
+                    <TextBox x:Name="oznaTxt" hlp:HelpProvider.HelpKey="PregledEtiketa"  Text="{Binding Path=oznaka}" IsEnabled="False" Width="165"></TextBox>
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="105*" />
+                    <ColumnDefinition Width="333*" />
+                    <ColumnDefinition Width="377*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0,0,8.667,0">
+                    <TextBlock Grid.Column="0" Grid.Row="1">Boja:</TextBlock>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="2.333,0,0.667,0">
+                    <xctk:ColorPicker x:Name="bojaPicker" hlp:HelpProvider.HelpKey="PregledEtiketa" Grid.Column="1" Margin="0,0,403,0" Grid.Row="2" SelectedColor="{Binding Path=boja , Mode=OneWay}" Width="167" />
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="102*" />
+                    <ColumnDefinition Width="336*" />
+                    <ColumnDefinition Width="377*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0,0,9,0">
+                    <TextBlock Grid.Column="0" Grid.Row="1">Opis:</TextBlock>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Margin="5.333,0,122.333,-28">
+                    <TextBox Margin="-1,0" MaxHeight="44" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" MaxLength="500" x:Name="opisTxt" hlp:HelpProvider.HelpKey="PregledEtiketa" Grid.Column="1" Grid.Row="1" Text="{Binding Path=opis,Mode=OneWay}" Width="166"/>
+                </StackPanel>
+
+            </Grid>
+
+        </StackPanel>
+        <Separator Margin="0,97.667,0.333,40.333" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <StackPanel HorizontalAlignment="Left" Height="39" Margin="-91,107,0,0" Grid.Row="1" VerticalAlignment="Top" Width="509" Grid.ColumnSpan="3" >
+            <Button x:Name="IzmeniButton" Content="Izmeni"   FontSize="14" Height="28" Click="IzmeniButton_Click" Margin="239,0,192.333,0" />
+            <Button x:Name="ObrisiButton" Content="Obrisi" Margin="334,-28,97.333,0" Click="ObrisiButton_Click" FontSize="14" Height="28"/>
+            <Button x:Name="ZatvoriButton" Content="Zatvori" Margin="425,-28,6.333,0" FontSize="14" Height="29" Click="ZatvoriButton_Click" />
+            <Button  x:Name="Dodaj" Content="Dodaj Etiketu" Margin="100,-28,319.333,0" Click="Dodaj_Click" />
+        </StackPanel>
+        <GridSplitter Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="209.667,63,-68.667,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="5"/>
+        <!-- Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding ElementName=dgrEtiketa,Path=SelectedItem}" Grid.ColumnSpan="2" Margin="0,0.333,0.334,0.333">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0">Oznaka:</TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="1">Opis:</TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="2">Boja:</TextBlock>
+
+
+            <TextBox x:Name="oznaTxt" hlp:HelpProvider.HelpKey="PregledEtiketa"  Grid.Column="1" Grid.Row="0" Text="{Binding Path=oznaka}" IsEnabled="False"></TextBox>
+            <TextBox x:Name="opisTxt" hlp:HelpProvider.HelpKey="PregledEtiketa" Grid.Column="1" Grid.Row="1" Text="{Binding Path=opis,Mode=OneWay}"></TextBox>
+            <xctk:ColorPicker x:Name="bojaPicker" hlp:HelpProvider.HelpKey="DodajEtiketa" Grid.Column="1" Margin="0,0.333,403,0" Grid.Row="2" SelectedColor="{Binding Path=boja , Mode=OneWay}" />
+
+
+            <Button x:Name="IzmeniButton" hlp:HelpProvider.HelpKey="PregledEtiketa" Content="Izmeni" Grid.Column="1" Margin="437,13,94,-37.667" Grid.Row="3" FontSize="14" Click="IzmeniButton_Click" />
+            <Button x:Name="ObrisiButton" hlp:HelpProvider.HelpKey="PregledEtiketa" Content="Obrisi" HorizontalAlignment="Left" Margin="499,13,0,-37.667" Width="56" Grid.Column="1" Grid.Row="3" FontSize="14" Click="ObrisiButton_Click" Height="26" VerticalAlignment="Top"/>
+            <Button Content="Zatvori" x:Name="ZatvoriButton" Click="ZatvoriButton_Click" Grid.Column="1" Margin="498,73,33,-97.667" Grid.Row="3" FontSize="14" />
+        </-->
+    </Grid>
+</Window>

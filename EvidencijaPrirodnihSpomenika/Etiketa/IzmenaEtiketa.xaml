@@ -1,0 +1,50 @@
+﻿<Window x:Class="EvidencijaPrirodnihSpomenika.Etiketa.IzmenaEtiketa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hlp="clr-namespace:EvidencijaPrirodnihSpomenika.Help"
+        xmlns:local="clr-namespace:EvidencijaPrirodnihSpomenika.Etiketa"
+        mc:Ignorable="d"
+        Title="IzmenaEtiketa" Height="360.444" Icon="/images/pregledspom.png" Width="364.888" ResizeMode="NoResize">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox"  StartPoint="0.5,0">
+
+            <GradientStop Color="PowderBlue"/>
+            <GradientStop Color="DodgerBlue" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.CommandBindings>
+        <CommandBinding x:Name="Help" Command="ApplicationCommands.Help" Executed="Help_Executed"></CommandBinding>
+    </Window.CommandBindings>
+
+    <Grid>
+        <ListBox Background="PowderBlue" x:Name="ListaDodata" Margin="0,23,227,39.333" SelectionMode="Single" ItemsSource="{Binding Path=ListaDodate}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock Text="{Binding OznakaEtiketa }"></TextBlock>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="DodajBtn" Content="Dodaj" Margin="153,117,161,176.333" Click="DodajBtn_Click" />
+        <Button x:Name="IzbaciBtn" Content="Izbaci" Margin="153,160,161,133.333" Click="IzbaciBtn_Click" />
+        <ListBox Background="PowderBlue" x:Name="ListaNije" Margin="222,23,0,39.333" ItemsSource="{Binding Path=ListaNisuDodate}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock Text="{Binding OznakaEtiketa }"></TextBlock>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock Text="Dodato" Margin="0,0,0,308.333"/>
+        <TextBlock Text="Nije Dodato" Margin="222,0,-25.667,308.667" />
+        <Button x:Name="PotvrdiBtn" Content="Potvrdi" Margin="0,292,0,-0.333" Click="PotvrdiBtn_Click" />
+    </Grid>
+</Window>

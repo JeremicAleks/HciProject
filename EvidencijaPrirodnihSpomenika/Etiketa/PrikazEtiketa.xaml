@@ -1,0 +1,81 @@
+﻿<Window x:Class="EvidencijaPrirodnihSpomenika.Etiketa.PrikazEtiketa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:EvidencijaPrirodnihSpomenika.Etiketa"
+        mc:Ignorable="d"
+        Title="PrikazEtiketa" Height="254.012" Width="294.251">
+    <Grid>
+        <Border Padding="10">
+            <StackPanel>
+
+                <!--OZNAKA-->
+                <Grid Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- Column 1 -->
+                    <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                        <TextBlock Text="Oznaka" FontSize="15"/>
+                    </StackPanel>
+                    <!-- Column 2 -->
+                    <StackPanel Grid.Column="1">
+                        <TextBox x:Name="PrikazoznakaTxt" IsEnabled="False" Margin="10,0,21.333,0" Height="22" />
+
+
+
+                    </StackPanel>
+
+                </Grid>
+                <!-- BOJA-->
+                <Grid Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- Column 1 -->
+                    <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                        <TextBlock Text="Boja" FontSize="15"/>
+                    </StackPanel>
+                    <!-- Column 2 -->
+                    <StackPanel Grid.Column="1">
+                        <xctk:ColorPicker x:Name="PrikazBojaPicker"  IsEnabled="False" Margin="10,0,22.333,0" />
+                    </StackPanel>
+
+                </Grid>
+
+
+
+
+                <!-- OPIS-->
+                <Grid Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- Column 1 -->
+                    <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                        <TextBlock Text="Opis" Margin="0,13,0,0" FontSize="15"  />
+                    </StackPanel>
+                    <!-- Column 2 -->
+                    <StackPanel Grid.Column="1">
+                        <TextBox x:Name="PrikazopisTxt" IsEnabled="False" Height="53" Margin="10,0,21.333,0" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                    </StackPanel>
+
+                </Grid>
+
+
+                <!-- BUTTONS-->
+                <StackPanel Orientation="Horizontal" Margin="0,30,0,0" >
+
+                    <Button x:Name="ZatvoriButton" Content="Zatvori" Margin="195,0,0,0" Width="49" Click="ZatvoriButton_Click" />
+                </StackPanel>
+
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

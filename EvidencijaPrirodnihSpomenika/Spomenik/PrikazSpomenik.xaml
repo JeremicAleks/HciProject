@@ -1,0 +1,168 @@
+﻿<Window x:Class="EvidencijaPrirodnihSpomenika.Spomenik.PrikazSpomenik"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EvidencijaPrirodnihSpomenika.Spomenik"
+        mc:Ignorable="d"
+        
+        Title="Prikaz Spomenika" Height="570" Width="323.333" WindowStartupLocation="CenterOwner">
+    <Border Padding=" 10 0 10 10">
+        <StackPanel>
+
+            <!--Description-->
+            <TextBlock Text="Oznaka"/>
+            <TextBox x:Name="OznakaText" Padding="2" />
+            <TextBlock Text="Naziv"/>
+            <TextBox x:Name="NazivText" Padding="2"/>
+            <TextBlock Text="Opis"/>
+            <TextBox x:Name="OpisText" Padding="2"/>
+
+            <StackPanel Height="76" Margin="0,0,0.333,0">
+                <TextBlock Text="Izaberite ikonicu"/>
+                <Image x:Name="ikonica" Stretch="Fill" Height="50"  Margin="21,5,214.333,0"  />
+                <Button x:Name="IkonicaButton" Content="Izaberi" Margin="110,-50,112.333,-0.333" Height="21" Click="IkonicaButton_Click" />
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Tip" Margin="0,5,0,0" Width="27"/>
+                <TextBox x:Name="tipTxt" IsEnabled="False" Width="148" Margin="20,0,0,0" Height="25" />
+
+                <Button x:Name="IzaberiTipButton" Content="Izaberi Tip" Margin="5,0,169.333,0" Height="27" Width="90" FontSize="14"  Click="IzaberiTipButton_Click" />
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <TextBlock Text="Etiketa" Margin="0,5,0,0" Width="36"/>
+                <TextBox x:Name="tagTxt" IsEnabled="False" Width="149" Margin="10.5,0,0,0" Height="25" />
+                <Button x:Name="IzaberiEtietuButton" Content="Izaberi Etiketu" Margin="5,0,0,0" Width="91" FontSize="14" Click="IzaberiEtietuButton_Click" />
+            </StackPanel>
+
+            <!--Tekst Klima i TStatus-->
+            <Grid Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <TextBlock Text="Klima:" Margin="10,0,0,0"/>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Turisticki status:" Margin="10,0,0,0"/>
+                </StackPanel>
+
+            </Grid>
+            <Grid Margin="0 2 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                    <ComboBox x:Name="KlimaDropdown" Width="125"  SelectedIndex="0" Padding="2" Margin="0,0,10,0" >
+                        <ComboBoxItem>Polarna</ComboBoxItem>
+                        <ComboBoxItem>Kontinentalna</ComboBoxItem>
+                        <ComboBoxItem>Umereno-kontinentalna</ComboBoxItem>
+                        <ComboBoxItem>Pustinjska</ComboBoxItem>
+                        <ComboBoxItem>Suptropska</ComboBoxItem>
+                        <ComboBoxItem>Tropska</ComboBoxItem>
+
+                    </ComboBox>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Grid.Column="1">
+                    <ComboBox x:Name="TstatusDropdown" SelectedIndex="0" Padding="2" Margin="0,0,19,0">
+                        <ComboBoxItem>Eksploatisan</ComboBoxItem>
+                        <ComboBoxItem>Dostupan</ComboBoxItem>
+                        <ComboBoxItem>Nedostupan</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+
+            </Grid>
+
+
+
+
+            <!--Ekoloski ugrozen-->
+            <Grid Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <TextBlock Text="Ekoloski ugrozen"/>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Grid.Column="1">
+                    <CheckBox x:Name="eUgrozen" >Da</CheckBox>
+                </StackPanel>
+
+            </Grid>
+
+            <!--Ugrozene vrste-->
+            <Grid Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <TextBlock Text="Staniste ugrozenih vrsta"/>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Grid.Column="1">
+                    <CheckBox x:Name="uVrste" >Da</CheckBox>
+                </StackPanel>
+
+            </Grid>
+
+            <!--Naseljen region-->
+            <Grid Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- Column 1 -->
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <TextBlock Text="Da li je u naseljenom regionu"/>
+                </StackPanel>
+                <!-- Column 2 -->
+                <StackPanel Grid.Column="1">
+                    <CheckBox x:Name="nasRegion" >Da</CheckBox>
+                </StackPanel>
+
+            </Grid>
+
+
+
+            <TextBlock Text="Godisnji prihod" Margin="0 10 0 0"/>
+            <TextBox x:Name="prihod" TextCompositionManager.PreviewTextInput="prihod_PreviewTextInput" Margin="0,0,0.333,0" />
+
+            <TextBlock Text="Datum otkrivanja" Margin="0 10 0 0"/>
+            <DatePicker x:Name="Datum" />
+            <GridSplitter HorizontalAlignment="Stretch" Height="11" Margin="-10,0,-9.667,0" RenderTransformOrigin="0.5,0.5">
+                <GridSplitter.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </GridSplitter.RenderTransform>
+            </GridSplitter>
+
+            <Grid Margin="0 10 0 0 ">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="DodajButton" Click="DodajButton_Click" Margin="0 0 10 0" Grid.Column="0" Content="Dodaj" />
+                <Button x:Name="OtkaziButton" Click="OtkaziButton_Click" Grid.Column="1" Content="Otkazi" />
+            </Grid>
+        </StackPanel>
+
+    </Border>
+</Window>
