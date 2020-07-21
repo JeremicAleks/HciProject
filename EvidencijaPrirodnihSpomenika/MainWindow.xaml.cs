@@ -2,19 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace EvidencijaPrirodnihSpomenika
 {
@@ -37,207 +29,7 @@ namespace EvidencijaPrirodnihSpomenika
             
 
         }
-
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-
-            bool isWindowsOpen = false;
-
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Spomenik.DodajSpomenik)
-                {
-                    isWindowsOpen = true;
-                    w.Activate();
-                    if (w.WindowState == WindowState.Minimized)
-                        w.WindowState = WindowState.Normal;
-                }
-            }
-            
-            if (!isWindowsOpen)
-            {
-                var dodaj = new Spomenik.DodajSpomenik();
-                dodaj.Show();
- 
-            }
-
-           
-
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Tutorial.Tutor)
-                {
-                    Tutorial.Tutor tutor = w as Tutorial.Tutor;
-                    if (tutor.korak == 1)
-                    {
-                        w.Activate();
-                        //Tutorial.Tutor tutor = w as Tutorial.Tutor;
-                        tutor.UnosOznake();
-                        
-                    }
-                    
-                }
-            }
-
-
-        }
-
-
-        private void pSpoemika_Click(object sender, RoutedEventArgs e)
-        {
-            Boolean upaljen = false;
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Tutorial.Tutor)
-                {
-                    
-                        w.Activate();
-                        upaljen = true;  
-
-                }
-            }
-            if (!upaljen)
-            {
-                var spoemnik = new Spomenik.PregledSpomenik();
-                spoemnik.Show();
-            }
-            else
-            {
-                MessageBox.Show("Morate zavrsiti ili ugasiti tutorijal za dodavanje spomenika");
-            }
-        }
-
-        private void pTipova_Click(object sender, RoutedEventArgs e)
-        {
-            Boolean upaljen = false;
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Tutorial.Tutor)
-                {
-
-                    w.Activate();
-                    upaljen = true;
-
-                }
-            }
-            if (!upaljen)
-            {
-                var tip = new Tip.PregledTip();
-                tip.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Morate zavrsiti ili ugasiti tutorijal za dodavanje spomenika");
-            }
-            
-        }
-
-        private void pEtiketa_Click(object sender, RoutedEventArgs e)
-        {
-            Boolean upaljen = false;
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Tutorial.Tutor)
-                {
-
-                    w.Activate();
-                    upaljen = true;
-
-                }
-            }
-            if (!upaljen)
-            {
-               
-                var tag = new Etiketa.PregledEtiketa();
-            tag.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Morate zavrsiti ili ugasiti tutorijal za dodavanje spomenika");
-            }
-
-            
-        }
-
-        private void DTipBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Boolean upaljen = false;
-            Boolean isWindowOpen = false;
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Tip.DodajTip)
-                {
-
-                    w.Activate();
-                    isWindowOpen = true;
-                    if (w.WindowState == WindowState.Minimized)
-                        w.WindowState = WindowState.Normal;
-
-                }
-            }
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Tutorial.Tutor)
-                {
-
-                    w.Activate();
-                    upaljen = true;
-
-                }
-            }
-            if (!isWindowOpen && !upaljen)
-            {
-                
-                var tip = new Tip.DodajTip();
-                tip.Show();
-            }
-            if(upaljen)
-            {
-                MessageBox.Show("Morate zavrsiti ili ugasiti tutorijal za dodavanje spomenika");
-            }
-            
-
-        }
-
-        private void DEtikBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Boolean upaljen = false;
-            Boolean isWindowOpen = false;
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Etiketa.DodajEtiketa)
-                {
-
-                    w.Activate();
-                    isWindowOpen = true;
-                    if (w.WindowState == WindowState.Minimized)
-                        w.WindowState = WindowState.Normal;
-
-                }
-            }
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Tutorial.Tutor)
-                {
-
-                    w.Activate();
-                    upaljen = true;
-
-                }
-            }
-            if (!isWindowOpen && !upaljen)
-            {
-
-                var etik = new Etiketa.DodajEtiketa();
-                etik.Show();
-            }
-            if (upaljen)
-            {
-                MessageBox.Show("Morate zavrsiti ili ugasiti tutorijal za dodavanje spomenika");
-            }
-
-
-        }
+       
         public ObservableCollection<Model.Lista> Listaspom
         {
             get;
@@ -281,15 +73,7 @@ namespace EvidencijaPrirodnihSpomenika
 
             }
         }
-        public void ubaci()
-
-        {
-            List<Model.Lista> items = new List<Model.Lista>();
-
-
-        }
-
-
+       
 
         private void ListaBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -457,16 +241,6 @@ namespace EvidencijaPrirodnihSpomenika
                             command2.ExecuteNonQuery();
                         }
 
-
-                        //sqliteCon.Open();
-                        //string query = "insert into spomenikmapa (oznaka,naziv,ikonica,X,Y) values('" + ls.Onaka+ "','" + ls.Naziv + "','" + ls.Ikonica + "','" + e.GetPosition(this.Kanvas).X + "','" + e.GetPosition(this.Kanvas).Y + "') ";
-                        //SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
-                        //command.ExecuteNonQuery();
-                        //
-                        //string query2 = "delete from zaDodavanje where oznaka='" + ls.Onaka + "'";
-                        //SQLiteCommand command2 = new SQLiteCommand(query2, sqliteCon);
-                        //command2.ExecuteNonQuery();
-
                     }
                     catch (Exception ex)
                     {
@@ -587,19 +361,10 @@ namespace EvidencijaPrirodnihSpomenika
                             command.ExecuteNonQuery();
                         }
 
-                        //sqliteCon.Open();
-                        //string query = "update spomenikmapa set X='" + e.GetPosition(this.Kanvas).X + "',Y='" + e.GetPosition(this.Kanvas).Y + "'where oznaka='" + img.Name.Substring(7) + "'";
-                        //SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
-                        //command.ExecuteNonQuery();
                     }
                     catch (Exception ex)
                     {
-
-
                         MessageBox.Show(ex.Message);
-
-
-
                     }
                 }
                 else
@@ -611,56 +376,6 @@ namespace EvidencijaPrirodnihSpomenika
             }
         }
 
-        //public Boolean provera(double x , double y,string oznaka)
-        //{
-        //    
-        //    SQLiteConnection sqliteCon = new SQLiteConnection(dbConn);
-        //    Boolean moze = true;
-        //    try
-        //    {
-        //        
-        //        sqliteCon.Open();
-        //        string query1 = "select * from spomenikmapa";
-        //        SQLiteCommand command1 = new SQLiteCommand(query1, sqliteCon);
-        //        command1.ExecuteNonQuery();
-        //        SQLiteDataReader dr = command1.ExecuteReader();
-        //
-        //
-        //        
-        //
-        //        string query = "select * from spomenikmapa where oznaka='" + oznaka + "'";
-        //        SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
-        //        //command1.Parameters.AddWithValue("@ozn1", ls.Onaka);
-        //        command.ExecuteNonQuery();
-        //        SQLiteDataReader dre = command.ExecuteReader();
-        //        
-        //        while (dre.Read())
-        //        {
-        //            
-        //            double xkor = (double)dre.GetValue(3);
-        //            double ykor = (double)dre.GetValue(4);
-        //            MessageBox.Show(xkor.ToString() + " " + ykor.ToString());
-        //        
-        //            if (x >= xkor - 10 && x <= xkor + 40 && y >= ykor - 10 && y <= ykor + 40)
-        //            {
-        //                moze = false;
-        //            }
-        //        
-        //        
-        //        }
-        //        sqliteCon.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //
-        //
-        //
-        //
-        //    return moze;
-        //
-        //}
         private static T FindAncestor<T>(DependencyObject current) where T : DependencyObject
         {
             do
@@ -711,9 +426,6 @@ namespace EvidencijaPrirodnihSpomenika
 
             }
         }
-
-     
-        
 
         public void fillMap()
         {
@@ -825,13 +537,6 @@ namespace EvidencijaPrirodnihSpomenika
             }
         }
 
-        private void DSpomenikMenu_Click(object sender, RoutedEventArgs e)
-        {
-
-            var dodaj = new Spomenik.DodajSpomenik();
-            dodaj.Show();
-        }
-
         private void ObirisSpomeniTb_Click(object sender, RoutedEventArgs e)
         {
 
@@ -882,9 +587,6 @@ namespace EvidencijaPrirodnihSpomenika
                         list.RemoveAt(idx);
                         Listaspom.RemoveAt(idx);
 
-                        //list.Remove(ml);
-                        //Listaspom.Remove(ml);
-
                     }
                 catch (Exception ex)
                 {
@@ -901,31 +603,6 @@ namespace EvidencijaPrirodnihSpomenika
             }
 
         }
-
-        private void PregledSpomTb_Click(object sender, RoutedEventArgs e)
-        {
-            Boolean upaljen = false;
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Tutorial.Tutor)
-                {
-
-                    w.Activate();
-                    upaljen = true;
-
-                }
-            }
-            if (!upaljen)
-            {
-                var spoemnik = new Spomenik.PregledSpomenik();
-                spoemnik.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Morate zavrsiti tutorijal za dodavanje spomenika");
-            }
-        }
-
 
         ///TUTORIJAL
 
@@ -951,13 +628,6 @@ namespace EvidencijaPrirodnihSpomenika
             }
             
         }
-
-        //private void Desni_Klik_slika (object sender, RoutedEventArgs e)
-        //{
-        //    ContextMenu cm = this.FindResource("Slicica") as ContextMenu;
-        //    cm.PlacementTarget = sender as Image;
-        //    cm.IsOpen = true;
-        //}
 
         private void ObrisiMn_Click(object sender, RoutedEventArgs e)
         {
@@ -1105,8 +775,6 @@ namespace EvidencijaPrirodnihSpomenika
 
             }
 
-
-
             foreach (Window w in Application.Current.Windows)
             {
                 if (w is Tutorial.Tutor)
@@ -1115,9 +783,7 @@ namespace EvidencijaPrirodnihSpomenika
                     if (tutor.korak == 1)
                     {
                         w.Activate();
-                        //Tutorial.Tutor tutor = w as Tutorial.Tutor;
                         tutor.UnosOznake();
-
                     }
 
                 }
@@ -1168,8 +834,138 @@ namespace EvidencijaPrirodnihSpomenika
                 MessageBox.Show("Morate zavrsiti ili ugasiti tutorijal za dodavanje spomenika");
             }
         }
-
         private void AddType_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void AddTag_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Boolean upaljen = false;
+            Boolean isWindowOpen = false;
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Etiketa.DodajEtiketa)
+                {
+
+                    w.Activate();
+                    isWindowOpen = true;
+                    if (w.WindowState == WindowState.Minimized)
+                        w.WindowState = WindowState.Normal;
+
+                }
+            }
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Tutorial.Tutor)
+                {
+
+                    w.Activate();
+                    upaljen = true;
+
+                }
+            }
+            if (!isWindowOpen && !upaljen)
+            {
+
+                var etik = new Etiketa.DodajEtiketa();
+                etik.Show();
+            }
+            if (upaljen)
+            {
+                MessageBox.Show("Morate zavrsiti ili ugasiti tutorijal za dodavanje spomenika");
+            }
+        }
+
+        private void AddTag_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ShowSpomenik_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Boolean upaljen = false;
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Tutorial.Tutor)
+                {
+
+                    w.Activate();
+                    upaljen = true;
+
+                }
+            }
+            if (!upaljen)
+            {
+                var spoemnik = new Spomenik.PregledSpomenik();
+                spoemnik.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Morate zavrsiti tutorijal za dodavanje spomenika");
+            }
+        }
+
+        private void ShowSpomenik_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ShowTypes_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Boolean upaljen = false;
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Tutorial.Tutor)
+                {
+
+                    w.Activate();
+                    upaljen = true;
+
+                }
+            }
+            if (!upaljen)
+            {
+                var tip = new Tip.PregledTip();
+                tip.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Morate zavrsiti ili ugasiti tutorijal za dodavanje spomenika");
+            }
+        }
+
+        private void ShowTypes_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ShowTags_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Boolean upaljen = false;
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Tutorial.Tutor)
+                {
+
+                    w.Activate();
+                    upaljen = true;
+
+                }
+            }
+            if (!upaljen)
+            {
+
+                var tag = new Etiketa.PregledEtiketa();
+                tag.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Morate zavrsiti ili ugasiti tutorijal za dodavanje spomenika");
+            }
+        }
+
+        private void ShowTags_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }

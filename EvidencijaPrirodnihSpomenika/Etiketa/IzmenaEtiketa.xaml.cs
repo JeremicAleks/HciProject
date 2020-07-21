@@ -41,18 +41,15 @@ namespace EvidencijaPrirodnihSpomenika.Etiketa
             SQLiteConnection sqliteCon = new SQLiteConnection(dbConn);
             try
             {
-                //ListaDodate = new ObservableCollection<Model.EtiketeSpomenik>();
                 sqliteCon.Open();
                 string query = "select * from SpomEtiketa where OznakaSpom='"+ozn+"'";
                 SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
-                //command.Parameters.AddWithValue("@ozn", ozn);
                 command.ExecuteNonQuery();
 
                 SQLiteDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
                     String oznakaEtike = dr.GetString(1);
-                    //this.ListaDodata.Items.Add(oznakaEtike);
                     dodate.Add(new Model.EtiketeSpomenik {OznakaSpom=ozn,OznakaEtiketa=oznakaEtike});
                 }
                 sqliteCon.Close();
@@ -74,7 +71,6 @@ namespace EvidencijaPrirodnihSpomenika.Etiketa
                 sqliteCon.Open();
                 string query = "Create view tab as select * from SpomEtiketa where OznakaSpom ='"+ozn+"'";
                 SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
-               // command.Parameters.AddWithValue("@ozn", ozn);
                 command.ExecuteNonQuery();
                 string query1 = "Select OznakaSpom, Oznaka from etiketa left outer join tab on etiketa.oznaka = tab.OznakaEtiketa";
                 SQLiteCommand command1 = new SQLiteCommand(query1, sqliteCon);
@@ -86,7 +82,6 @@ namespace EvidencijaPrirodnihSpomenika.Etiketa
                 {
                     if (dr.IsDBNull(0))
                     {
-                        //ListaNije.Items.Add(dr.GetString(1));
                         nisuDodate.Add(new Model.EtiketeSpomenik { OznakaEtiketa = dr.GetString(1),OznakaSpom=null });
                     }
                 }
@@ -112,11 +107,9 @@ namespace EvidencijaPrirodnihSpomenika.Etiketa
             SQLiteConnection sqliteCon = new SQLiteConnection(dbConn);
             try
             {
-                //ListaDodate = new ObservableCollection<Model.EtiketeSpomenik>();
                 sqliteCon.Open();
                 string query = "select * from SpomEtiketa where OznakaSpom='"+oznakaSp+"'";
                 SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
-                //command.Parameters.AddWithValue("@oznsp", oznakaSp);
                 command.ExecuteNonQuery();
 
                 SQLiteDataReader dr = command.ExecuteReader();
