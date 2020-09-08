@@ -1,6 +1,10 @@
 # HciProject
 Records of natural monuments
 
+- WPF application
+- Drag and drop mechanism
+- Step by step tutorial
+
 ## VOĐENJE EVIDENCIJE O MAPI SVETSKIH PRIRODNIH SPOMENIKA
 Aplikacija za vođenje evidencije o geografskoj distribuciji svetskih prirodnih spomenika, odnosno mesta izuzetne prirodne lepote i značaja. Potrebno je realizovati distribuciju preko mape sveta na koju se prevlače i spuštaju simboli različitih spomenika. Mapa je fiksna slika koja se ne skroluje i ne zumira. Svi podaci se čuvaju u fajlu i učitavaju prilikom startovanja aplikacije.
 Svaki spomenik je opisan preko: svoje jedinstvene ljudski-čitljive oznake koju unosi korisnik, imena, opisa, tipa, klime u kojoj se nalazi, ikonice, da li je ekološki ugrožen, da li je stanište ugroženih vrsta, da li je u naseljenom regionu ili ne, turističkog statusa, godišnjeg prihoda od turizma, i datuma otkrivanja. Ikonica je sličica koja se učitava i koja se koristi da se spomenik označi na mapi i može da se i ne postavi i, ako se ne postavi, onda se podrazumevano uzima ikonica tipa. Klima je jedna od sledećih vrednosti: polarna, kontinentalna, umereno-kontinentalna, pustinjska, suptropska, i tropska. Turistički status je jedna od sledećih vrednosti: eksploatisan, dostupan, nedostupan, a prihod je u dolarima. Spomenici takođe mogu biti i "tagovani" sa nijednom, jednom, ili više etiketa. Etikete specificira korisnik i one su opisane svojom jedinstvenom ljudski-čitljivom oznakom koju unosi korisnik, bojom i opisom.
